@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CalculatorGui  {
+
+public class CalculatorGui {
 
     public JPanel CalculatorView;
 
@@ -19,6 +20,9 @@ public class CalculatorGui  {
     public JButton two;
     public JButton three;
     public JButton zero;
+
+    double a, b, result;
+    String op;
 
     //operations
     public JButton substract;
@@ -91,6 +95,30 @@ public class CalculatorGui  {
                 resultsTxt.setText(resultsTxt.getText() + zero.getText());
             }
         });
+
+        decimal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!resultsTxt.getText().contains(".")) {
+                    resultsTxt.setText(resultsTxt.getText() + decimal.getText());
+                }
+            }
+        });
+        addiction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                a = Double.parseDouble(resultsTxt.getText());
+                op = "+";
+                resultsTxt.setText("");
+            }
+        });
+        substract.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                a = Double.parseDouble(resultsTxt.getText());
+                op = "-";
+                resultsTxt.setText("");
+            }
+        });
     }
 }
-
