@@ -120,5 +120,48 @@ public class CalculatorGui {
                 resultsTxt.setText("");
             }
         });
+        multiply.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                a = Double.parseDouble(resultsTxt.getText());
+                op = "*";
+                resultsTxt.setText("");
+            }
+        });
+        divide.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                a = Double.parseDouble(resultsTxt.getText());
+                op = "/";
+                resultsTxt.setText("");
+            }
+        });
+        clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                resultsTxt.setText("");
+            }
+        });
+        equal.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                b = Double.parseDouble(resultsTxt.getText());
+
+                if(op == "+") {
+                    result = a+b;
+                    resultsTxt.setText(String.valueOf(result));
+                }else if (op == "-"){
+                    result = a-b;
+                    resultsTxt.setText(String.valueOf(result));
+                }else if (op == "*"){
+                    result = a*b;
+                    resultsTxt.setText(String.valueOf(result));
+                }else if (op == "/"){
+                    result = a/b;
+                    resultsTxt.setText(String.valueOf(result));
+                }
+
+            }
+        });
     }
 }
