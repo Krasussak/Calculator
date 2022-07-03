@@ -21,7 +21,9 @@ public class CalculatorGui {
     public JButton three;
     public JButton zero;
 
-    double a, b, result;
+    private double a;
+    private double b;
+    private double result;
     String op;
 
     //operations
@@ -33,65 +35,86 @@ public class CalculatorGui {
     public JTextField resultsTxt;
     public JButton equal;
     public JButton decimal;
+    private JButton lastButtonPressed;
 
     public CalculatorGui() {
         one.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + one.getText());
             }
         });
         two.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + two.getText());
             }
         });
         three.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + three.getText());
             }
         });
         four.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + four.getText());
             }
         });
         five.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + five.getText());
             }
         });
         six.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + six.getText());
             }
         });
         seven.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + seven.getText());
             }
         });
         eight.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + eight.getText());
             }
         });
         nine.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + nine.getText());
             }
         });
         zero.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                clearResultTxt();
+                lastButtonPressed = (JButton) e.getSource();
                 resultsTxt.setText(resultsTxt.getText() + zero.getText());
             }
         });
@@ -99,6 +122,7 @@ public class CalculatorGui {
         decimal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                lastButtonPressed = (JButton) e.getSource();
                 if (!resultsTxt.getText().contains(".")) {
                     resultsTxt.setText(resultsTxt.getText() + decimal.getText());
                 }
@@ -107,44 +131,45 @@ public class CalculatorGui {
         addiction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                lastButtonPressed = (JButton) e.getSource();
                 a = Double.parseDouble(resultsTxt.getText());
                 op = "+";
-                resultsTxt.setText("");
             }
         });
         substract.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                lastButtonPressed = (JButton) e.getSource();
                 a = Double.parseDouble(resultsTxt.getText());
                 op = "-";
-                resultsTxt.setText("");
             }
         });
         multiply.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                lastButtonPressed = (JButton) e.getSource();
                 a = Double.parseDouble(resultsTxt.getText());
                 op = "*";
-                resultsTxt.setText("");
             }
         });
         divide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                lastButtonPressed = (JButton) e.getSource();
                 a = Double.parseDouble(resultsTxt.getText());
                 op = "/";
-                resultsTxt.setText("");
             }
         });
         clear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                resultsTxt.setText("");
+                lastButtonPressed = (JButton) e.getSource();
             }
         });
         equal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                lastButtonPressed = (JButton) e.getSource();
                 b = Double.parseDouble(resultsTxt.getText());
 
                 if(op == "+") {
@@ -163,5 +188,11 @@ public class CalculatorGui {
 
             }
         });
+    }
+
+    private void clearResultTxt() {
+        if (lastButtonPressed != null && (lastButtonPressed.equals(addiction) || lastButtonPressed.equals(substract) || lastButtonPressed.equals(multiply) || lastButtonPressed.equals(divide))) {
+            resultsTxt.setText("");
+        }
     }
 }
